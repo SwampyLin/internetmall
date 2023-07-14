@@ -119,7 +119,7 @@ function Checkout() {
               </Link>
               <button
                 type='submit'
-                className='btn btn-dark py-3 px-7 rounded-0'
+                className='btn btn-outline-primary py-3 px-7 rounded-0'
               >
                 送出訂單
               </button>

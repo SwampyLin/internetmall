@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useOutletContext, useParams } from 'react-router-dom'
 import Loading from '../../components/Loading'
+import { useDispatch } from 'react-redux'
+import { createAsyncMessage } from '../../slice/messageSlice'
 
 function ProductDetail() {
   const [product, setProduct] = useState({})
@@ -9,6 +11,7 @@ function ProductDetail() {
   const { id } = useParams()
   const [isLoading, setIsLoading] = useState(false)
   const { getCart } = useOutletContext()
+  const dispatch = useDispatch()
 
   const getProduct = async (id) => {
     setIsLoading(true)
@@ -33,10 +36,12 @@ function ProductDetail() {
         data
       )
       console.log(res)
+      dispatch(createAsyncMessage(res.data))
       getCart()
       setIsLoading(false)
     } catch (error) {
       console.log(error)
+      dispatch(createAsyncMessage(error.response.data))
       setIsLoading(false)
     }
   }
@@ -68,7 +73,7 @@ function ProductDetail() {
           <div className='input-group mb-3 border mt-3'>
             <div className='input-group-prepend'>
               <button
-                className='btn btn-outline-dark rounded-0 border-0 py-3'
+                className='btn btn-outline-primary rounded-0 border-0 py-3'
                 type='button'
                 id='button-addon1'
                 onClick={() => {
@@ -89,7 +94,7 @@ function ProductDetail() {
             />
             <div className='input-group-append'>
               <button
-                className='btn btn-outline-dark rounded-0 border-0 py-3'
+                className='btn btn-outline-primary rounded-0 border-0 py-3'
                 type='button'
                 id='button-addon2'
                 onClick={() => {
@@ -102,7 +107,7 @@ function ProductDetail() {
           </div>
           <button
             type='button'
-            className='btn btn-dark w-100 rounded-0 py-3'
+            className='btn btn-primary w-100 rounded-0 py-3'
             onClick={() => addToCart()}
             disabled={isLoading}
           >

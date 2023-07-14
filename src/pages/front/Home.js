@@ -35,7 +35,7 @@ function Home() {
                     煥然一新，風格簡約的拉拉熊
                   </p>
                   <Link
-                    className='btn btn-outline-dark rounded-3 p-3'
+                    className='btn btn-outline-primary rounded-3 p-3'
                     to='/products'
                   >
                     去逛逛
@@ -58,7 +58,7 @@ function Home() {
                     拉拉熊們和蜂蜜森林的朋友們一起野外求生
                   </p>
                   <Link
-                    className='btn btn-outline-dark rounded-3 p-3'
+                    className='btn btn-outline-primary rounded-3 p-3'
                     to='/products'
                   >
                     去逛逛
@@ -81,7 +81,7 @@ function Home() {
                     留白背景，非常節省流量
                   </p>
                   <Link
-                    className='btn btn-outline-dark rounded-3 p-3'
+                    className='btn btn-outline-primary rounded-3 p-3'
                     to='/products'
                   >
                     去逛逛
@@ -104,7 +104,7 @@ function Home() {
                     第四十四回主題，熊姥姥進遊樂園
                   </p>
                   <Link
-                    className='btn btn-outline-dark rounded-3 p-3'
+                    className='btn btn-outline-primary rounded-3 p-3'
                     to='/products'
                   >
                     去逛逛

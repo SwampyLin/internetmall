@@ -3,14 +3,16 @@ import { useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Loading from '../../components/Loading'
+import { useDispatch } from 'react-redux'
+import { createAsyncMessage } from '../../slice/messageSlice'
 
 function Cart() {
   const { cartData, getCart, isLoading } = useOutletContext()
   const [loadingItems, setLoadingItems] = useState([])
   const [cartIsLoading, setCartIsLoading] = useState(false)
+  const dispatch = useDispatch()
 
   const updateCartItem = async (item, quantity) => {
-    setCartIsLoading(true)
     const data = {
       data: {
         product_id: item.product_id,
@@ -30,30 +32,35 @@ function Cart() {
           return loadingObject !== item.id
         })
       )
-      setCartIsLoading(false)
+      dispatch(createAsyncMessage(res.data))
     } catch (error) {
       console.log(error)
+      dispatch(createAsyncMessage(error.response.data))
+      setLoadingItems(
+        loadingItems.filter((loadingObject) => {
+          return loadingObject !== item.id
+        })
+      )
     }
   }
 
   const removeCartItem = async (id) => {
-    setCartIsLoading(true)
     try {
       const res = await axios.delete(
         `/v2/api/${process.env.REACT_APP_API_PATH}/cart/${id}`
       )
       console.log('這是刪除商品的api返回資訊', res)
       getCart()
-      setCartIsLoading(false)
+      dispatch(createAsyncMessage(res.data))
     } catch (error) {
       console.log(error)
-      setCartIsLoading(false)
+      dispatch(createAsyncMessage(error.response.data))
     }
   }
 
   return (
     <>
-      <Loading isLoading={isLoading || cartIsLoading}></Loading>
+      {/* <Loading isLoading={isLoading || cartIsLoading}></Loading> */}
       <div className='container'>
         <div className='row justify-content-center'>
           <div
@@ -147,7 +154,7 @@ function Cart() {
             </div>
             <Link
               to={'/products'}
-              className={`btn btn-dark w-100 mt-4 rounded-0 py-3 ${
+              className={`btn btn-outline-primary w-100 mt-4 rounded-0 py-3 ${
                 cartData.total === 0 ? 'd-none' : 'd-block'
               }`}
             >
@@ -155,7 +162,7 @@ function Cart() {
             </Link>
             <Link
               to={'/checkout'}
-              className={`btn btn-dark w-100 mt-4 rounded-0 py-3 ${
+              className={`btn btn-outline-primary w-100 mt-4 rounded-0 py-3 ${
                 cartData.total === 0 ? 'd-none' : 'd-block'
               }`}
             >
