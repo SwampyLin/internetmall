@@ -17,7 +17,6 @@ function Checkout() {
 
   const onSubmit = async (data) => {
     const { name, email, tel, address } = data
-    console.log(name, email, tel, address)
     const form = {
       data: {
         user: {
@@ -32,7 +31,7 @@ function Checkout() {
       `/v2/api/${process.env.REACT_APP_API_PATH}/order`,
       form
     )
-    console.log(res)
+
     navigate(`/success/${res.data.orderId}`)
   }
 

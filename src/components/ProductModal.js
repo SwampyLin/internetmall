@@ -60,7 +60,7 @@ function ProductModal({ closeProductModal, getProducts, type, tempProduct }) {
       const res = await axios[method](api, {
         data: tempData
       })
-      console.log(res)
+
       handleSuccessMessage(dispatch, res)
       closeProductModal()
       getProducts()

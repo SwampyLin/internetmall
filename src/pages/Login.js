@@ -18,7 +18,6 @@ function Login() {
   const submit = async (e) => {
     try {
       const res = await axios.post('/v2/admin/signin', data)
-      // console.log(res)
       const { token, expired } = res.data
       document.cookie = `hexToken=${token}; expires=${new Date(expired)}`
       //儲存Token

@@ -1,21 +1,22 @@
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useOutletContext } from 'react-router-dom'
 
 function Success() {
+  const { getCart } = useOutletContext()
   const { orderId } = useParams()
-  console.log(orderId)
   const [orderData, setOrderData] = useState({})
 
-  const getCart = async (orderId) => {
+  const getOrders = async (orderId) => {
     const res = await axios.get(
       `/v2/api/${process.env.REACT_APP_API_PATH}/order/${orderId}`
     )
-    console.log('getCart', res)
     setOrderData(res.data.order)
   }
   useEffect(() => {
-    getCart(orderId)
+    getOrders(orderId)
+    getCart()
   }, [orderId])
 
   return (

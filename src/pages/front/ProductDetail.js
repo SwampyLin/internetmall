@@ -35,7 +35,6 @@ function ProductDetail() {
         `/v2/api/${process.env.REACT_APP_API_PATH}/cart`,
         data
       )
-      console.log(res)
       dispatch(createAsyncMessage(res.data))
       getCart()
       setIsLoading(false)

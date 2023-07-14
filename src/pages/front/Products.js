@@ -14,7 +14,6 @@ function Products() {
     const productRes = await axios.get(
       `/v2/api/${process.env.REACT_APP_API_PATH}/products?page=${page}`
     )
-    console.log(productRes)
     setProducts(productRes.data.products)
     setPagination(productRes.data.pagination)
     setIsLoading(false)

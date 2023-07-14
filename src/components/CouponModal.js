@@ -49,7 +49,6 @@ function CouponModal({ closeModal, getCoupons, type, tempCoupon }) {
       const res = await axios[method](api, {
         data: { ...tempData, due_date: date.getTime() }
       })
-      console.log(res)
       closeModal()
       getCoupons()
     } catch (error) {

@@ -2,14 +2,12 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import Loading from '../../components/Loading'
 import { useDispatch } from 'react-redux'
 import { createAsyncMessage } from '../../slice/messageSlice'
 
 function Cart() {
-  const { cartData, getCart, isLoading } = useOutletContext()
+  const { cartData, getCart, removeAllItem } = useOutletContext()
   const [loadingItems, setLoadingItems] = useState([])
-  const [cartIsLoading, setCartIsLoading] = useState(false)
   const dispatch = useDispatch()
 
   const updateCartItem = async (item, quantity) => {
@@ -25,7 +23,6 @@ function Cart() {
         `/v2/api/${process.env.REACT_APP_API_PATH}/cart/${item.id}`,
         data
       )
-      console.log('這是調整商品數量的返回資訊', res)
       getCart()
       setLoadingItems(
         loadingItems.filter((loadingObject) => {
@@ -49,7 +46,6 @@ function Cart() {
       const res = await axios.delete(
         `/v2/api/${process.env.REACT_APP_API_PATH}/cart/${id}`
       )
-      console.log('這是刪除商品的api返回資訊', res)
       getCart()
       dispatch(createAsyncMessage(res.data))
     } catch (error) {
@@ -168,6 +164,18 @@ function Cart() {
             >
               去結帳
             </Link>
+            <button
+              type='button'
+              to={'/checkout'}
+              className={`btn btn-outline-danger w-100 mt-4 rounded-0 py-3 ${
+                cartData.total === 0 ? 'd-none' : 'd-block'
+              }`}
+              onClick={() => {
+                removeAllItem()
+              }}
+            >
+              清空購物車
+            </button>
           </div>
         </div>
       </div>
