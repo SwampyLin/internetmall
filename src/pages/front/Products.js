@@ -32,18 +32,18 @@ function Products() {
             return (
               <div className='col-md-3' key={product.id}>
                 <div className='card border-0 mb-4 position-relative position-relative'>
-                  <img
-                    src={product.imageUrl}
-                    className='card-img-top rounded-0 object-cover'
-                    alt='...'
-                    height={300}
-                  />
-                  <div className='card-body p-0'>
-                    <h4 className='mb-0 mt-1'>
-                      <Link to={`/product/${product.id}`}>{product.title}</Link>
-                    </h4>
-                    <p className='text-muted mt-3'>NT$ {product.price}</p>
-                  </div>
+                  <Link to={`/product/${product.id}`} className='product'>
+                    <img
+                      src={product.imageUrl}
+                      className='card-img-top rounded-0 object-cover'
+                      alt='...'
+                      height={300}
+                    />
+                    <div className='card-body p-0'>
+                      <h4 className='mb-0 mt-1'>{product.title}</h4>
+                      <p className='text-muted mt-3'>NT$ {product.price}</p>
+                    </div>
+                  </Link>
                 </div>
               </div>
             )
