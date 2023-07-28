@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/internetmall/static/css/main.3d893113.css",
-    "main.js": "/internetmall/static/js/main.f2f93859.js",
+    "main.css": "/internetmall/static/css/main.98b2f2ce.css",
+    "main.js": "/internetmall/static/js/main.15767f2d.js",
     "static/js/787.53af0e22.chunk.js": "/internetmall/static/js/787.53af0e22.chunk.js",
     "static/media/bootstrap-icons.woff?": "/internetmall/static/media/bootstrap-icons.4753c5ba57962b4d7bf8.woff",
     "static/media/bootstrap-icons.woff2?": "/internetmall/static/media/bootstrap-icons.6d63d0501e5ed7b79dab.woff2",
     "index.html": "/internetmall/index.html",
-    "main.3d893113.css.map": "/internetmall/static/css/main.3d893113.css.map",
-    "main.f2f93859.js.map": "/internetmall/static/js/main.f2f93859.js.map",
+    "main.98b2f2ce.css.map": "/internetmall/static/css/main.98b2f2ce.css.map",
+    "main.15767f2d.js.map": "/internetmall/static/js/main.15767f2d.js.map",
     "787.53af0e22.chunk.js.map": "/internetmall/static/js/787.53af0e22.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3d893113.css",
-    "static/js/main.f2f93859.js"
+    "static/css/main.98b2f2ce.css",
+    "static/js/main.15767f2d.js"
   ]
 }
